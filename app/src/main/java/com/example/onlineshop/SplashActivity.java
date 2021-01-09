@@ -18,17 +18,14 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        logo=findViewById(R.id.logo);
+
         appName=findViewById(R.id.appName);
-      //  splashImage=findViewById(R.id.imageV);
         lottieAnimationView=findViewById(R.id.lottie);
 
 
-    //    splashImage.animate().translationY(-1600).setDuration(1000).setStartDelay(4000);
 
         appName.animate().translationY(1000).setDuration(1000).setStartDelay(4000);
-        logo.animate().translationY(2400).setDuration(1000).setStartDelay(4000);
-        lottieAnimationView.animate().translationY(-600).setDuration(1000).setStartDelay(4000);
+        lottieAnimationView.animate().translationY(-300).setDuration(2000).setStartDelay(4000);
 
 new Handler().postDelayed(new Runnable() {
     @Override

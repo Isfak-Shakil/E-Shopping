@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/lightWhite"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/_15sdp"
+    android:layout_height="@dimen/_200sdp"
+    android:paddingStart="@dimen/_15sdp"
+    tools:ignore="RtlSymmetry">
+
+    <TextView
+        android:id="@+id/menu_sloganId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_alignParentBottom="true"
+        android:text="A better place for shopping"
+        android:textAllCaps="false"
+        android:textColor="@color/blue" />
+
+    <TextView
+        android:id="@+id/appName_Id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Online Shop"
+        android:layout_above="@id/menu_sloganId"
+        android:textSize="@dimen/_20sdp"
+        android:textColor="@color/blue"
+        android:textStyle="bold" />
+
+
+        <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
+        android:elevation="@dimen/_2sdp"
+        app:lottie_autoPlay="true"
+        app:lottie_rawRes="@raw/splash"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="@dimen/_140sdp"
+        android:layout_height="@dimen/_160sdp"
+            android:layout_alignParentEnd="true" />
+
+
+
+</RelativeLayout>

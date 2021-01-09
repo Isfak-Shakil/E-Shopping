@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <group android:checkableBehavior="single">
+
+                <item
+                    android:id="@+id/navCategories"
+                    android:icon="@drawable/menu_black"
+                    android:title="Categories" />
+                <item
+                    android:id="@+id/navFavourite"
+                    android:icon="@drawable/favorite_black"
+                    android:title="My Favourites" />
+                <item
+                    android:id="@+id/navCatList"
+                    android:icon="@drawable/cart_black"
+                    android:title="CatList" />
+                <item
+                    android:id="@+id/navMyOrder"
+                    android:icon="@drawable/shopping_black"
+                    android:title="My Order" />
+                <item
+                    android:id="@+id/navSettings"
+                    android:icon="@drawable/settings_black"
+                    android:title="Settings" />
+
+
+
+    </group>
+
+
+
+
+    <group
+        android:id="@+id/group4"
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/subtitle3"
+            android:title="Social">
+            <menu>
+                <item
+                    android:id="@+id/navFacebook"
+                    android:icon="@drawable/facebook_black"
+                    android:title="Facebook" />
+                <item
+                    android:id="@+id/navInstagram"
+                    android:icon="@drawable/instagram"
+                    android:title="Instagram" />
+                <item
+                    android:id="@+id/navWhatsapp"
+                  android:icon="@drawable/whatsapp"
+                    android:title="Whatsapp" />
+
+            </menu>
+        </item>
+    </group>
+
+<item android:title="Others"/>
+    <group
+        android:id="@+id/group2"
+        android:checkableBehavior="none">
+        <item
+            android:id="@+id/subtitle"
+            android:title="Others">
+            <menu>
+                <item
+                    android:id="@+id/navTerms"
+                    android:icon="@drawable/terms_cond"
+                    android:title="Terms &amp; Conditions" />
+                <item
+                    android:id="@+id/navFaq"
+                    android:icon="@drawable/faq"
+                    android:title="FAQ" />
+                <item
+                    android:id="@+id/navRateApp"
+                    android:icon="@drawable/star"
+                    android:title="Rate App" />
+                <item
+                    android:id="@+id/navMoreApp"
+                    android:icon="@drawable/playstore"
+                    android:title="More App" />
+
+            </menu>
+        </item>
+    </group>
+
+
+
+
+
+</menu>
