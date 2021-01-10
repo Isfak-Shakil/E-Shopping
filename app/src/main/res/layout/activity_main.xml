@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout_Id"
     android:layout_width="match_parent"
+    android:background="@color/lightWhite"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
@@ -24,48 +25,301 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:background="@color/lightWhite"
         android:orientation="vertical">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_margin="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <RelativeLayout
+                android:elevation="@dimen/_8sdp"
+                android:background="@color/lightWhite"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize">
+                <ImageView
+                    android:id="@+id/menuBtn"
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_15sdp"
+                    android:src="@drawable/menu_icon_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/nameBtn"
+                    android:text="Online Shop"
+                    android:textSize="@dimen/_20sdp"
+                    android:padding="@dimen/_5sdp"
+                    android:layout_centerInParent="true"
+                    android:layout_toRightOf="@id/menuBtn"
+                    android:textColor="@android:color/holo_blue_bright"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   />
+
+                <ImageView
+                    android:layout_centerVertical="true"
+                    android:padding="@dimen/_15sdp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/search_icon_blue"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </RelativeLayout>
+
+
+
+
+        </LinearLayout>
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_margin="@dimen/_10sdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:elevation="@dimen/_8sdp"
-                    android:background="@color/lightWhite"
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="?actionBarSize">
-                    <ImageView
-                        android:id="@+id/menuBtn"
-                        android:layout_centerVertical="true"
-                        android:padding="@dimen/_15sdp"
-                        android:src="@drawable/menu_icon_blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:id="@+id/nameBtn"
-                        android:src="@drawable/name"
-                        android:layout_toRightOf="@id/menuBtn"
-                        android:layout_marginRight="@dimen/_30sdp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    android:layout_height="@dimen/_140sdp">
+                    <com.smarteist.autoimageslider.SliderLayout
+                        android:id="@+id/imageSlider"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_140sdp"
                         />
-                    <ImageView
-                        android:layout_centerVertical="true"
-                        android:padding="@dimen/_15sdp"
-                        android:layout_alignParentRight="true"
-                        android:src="@drawable/search_icon_blue"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
                 </RelativeLayout>
 
+<!--                <LinearLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_gravity="center">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="@dimen/_60sdp"-->
+<!--                            android:layout_height="@dimen/_60sdp"-->
+<!--                            android:layout_margin="@dimen/_10sdp"-->
+<!--                            android:background="@drawable/card1"-->
+<!--                            android:elevation="@dimen/_8sdp">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="@dimen/_30sdp"-->
+<!--                                android:layout_height="@dimen/_30sdp"-->
+<!--                                android:layout_centerInParent="true"-->
+<!--                                android:src="@drawable/restaurant_icon" />-->
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center_horizontal"-->
+<!--                            android:text="Restaurant"-->
+<!--                            android:textAlignment="center" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="@dimen/_60sdp"-->
+<!--                            android:layout_height="@dimen/_60sdp"-->
+<!--                            android:layout_margin="@dimen/_10sdp"-->
+<!--                            android:background="@drawable/card2"-->
+<!--                            android:elevation="@dimen/_8sdp">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="@dimen/_30sdp"-->
+<!--                                android:layout_height="@dimen/_30sdp"-->
+<!--                                android:layout_centerInParent="true"-->
+<!--                                android:src="@drawable/hotel_icon" />-->
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center_horizontal"-->
+<!--                            android:text="Hotels"-->
+<!--                            android:textAlignment="center" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="@dimen/_60sdp"-->
+<!--                            android:layout_height="@dimen/_60sdp"-->
+<!--                            android:layout_margin="@dimen/_10sdp"-->
+<!--                            android:background="@drawable/card3"-->
+<!--                            android:elevation="@dimen/_8sdp">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="@dimen/_30sdp"-->
+<!--                                android:layout_height="@dimen/_30sdp"-->
+<!--                                android:layout_centerInParent="true"-->
+<!--                                android:src="@drawable/airport_icon" />-->
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center_horizontal"-->
+<!--                            android:text="Airports"-->
+<!--                            android:textAlignment="center" />-->
+<!--                    </LinearLayout>-->
+
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="@dimen/_60sdp"-->
+<!--                            android:layout_height="@dimen/_60sdp"-->
+<!--                            android:layout_margin="@dimen/_10sdp"-->
+<!--                            android:background="@drawable/card4"-->
+<!--                            android:elevation="@dimen/_8sdp">-->
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="@dimen/_30sdp"-->
+<!--                                android:layout_height="@dimen/_30sdp"-->
+<!--                                android:layout_centerInParent="true"-->
+<!--                                android:src="@drawable/shop_icon" />-->
+
+<!--                        </RelativeLayout>-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:gravity="center_horizontal"-->
+<!--                            android:text="Shops"-->
+<!--                            android:textAlignment="center" />-->
+<!--                    </LinearLayout>-->
+<!--                </LinearLayout>-->
+
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="@dimen/_15sdp"-->
+<!--                    android:layout_marginTop="@dimen/_15sdp"-->
+<!--                    android:background="@color/banner_background_light">-->
+
+<!--                    <LinearLayout-->
+<!--                        android:id="@+id/featuredBacgkroudId"-->
+<!--                        android:layout_width="@dimen/_160sdp"-->
+<!--                        android:layout_height="@dimen/_280sdp"-->
+<!--                        android:layout_margin="@dimen/_10sdp"-->
+<!--                        android:background="@color/banner_background"-->
+<!--                        android:orientation="vertical">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_marginLeft="@dimen/_10sdp"-->
+<!--                            android:layout_marginTop="@dimen/_40sdp"-->
+<!--                            android:text="All Featured Locations"-->
+<!--                            android:textAllCaps="true"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_25sdp" />-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_margin="@dimen/_10sdp"-->
+<!--                            android:text="Location Description"-->
+<!--                            android:textSize="@dimen/_14sdp" />-->
 
 
+<!--                    </LinearLayout>-->
 
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/featuredRecyclerId"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_300sdp"-->
+<!--                        android:layout_toRightOf="@id/featuredBacgkroudId"-->
+<!--                        android:background="@color/home_background" />-->
+
+<!--                </RelativeLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_15sdp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="@dimen/_20sdp">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Most Viewed Places"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_20sdp" />-->
+
+<!--                        <TextView-->
+
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:text="View all" />-->
+
+<!--                    </RelativeLayout>-->
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/mostViewedRecyclerId"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_150sdp" />-->
+<!--                </LinearLayout>-->
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/_15sdp"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:padding="@dimen/_20sdp">-->
+
+<!--                    <RelativeLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content">-->
+
+<!--                        <TextView-->
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="Categories"-->
+<!--                            android:textAllCaps="false"-->
+<!--                            android:textColor="@color/black"-->
+<!--                            android:textSize="@dimen/_20sdp" />-->
+
+<!--                        <TextView-->
+
+<!--                            android:layout_width="wrap_content"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:layout_alignParentRight="true"-->
+<!--                            android:layout_centerVertical="true"-->
+<!--                            android:text="View all" />-->
+
+<!--                    </RelativeLayout>-->
+
+<!--                    <androidx.recyclerview.widget.RecyclerView-->
+<!--                        android:id="@+id/categoriesRecyclerId"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="@dimen/_200sdp" />-->
+<!--                </LinearLayout>-->
             </LinearLayout>
+
+
         </ScrollView>
     </LinearLayout>
 
