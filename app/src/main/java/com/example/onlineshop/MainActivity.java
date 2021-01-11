@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -19,9 +21,15 @@ import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderLayout;
 import com.smarteist.autoimageslider.SliderView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     static final float END_SCALE = 0.7f;
     private ImageView menuBtn;
+
+    RecyclerView catRecycler;
+    //CatAdapter catAdapter;
+
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -39,11 +47,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         menuBtn=findViewById(R.id.menuBtn);
+        catRecycler=findViewById(R.id.categoriesRecyclerId);
+        catRecycler();
+
 
         drawerLayout = findViewById(R.id.drawerLayout_Id);
         navigationView = findViewById(R.id.navigationView_Id);
         contentView= findViewById(R.id.content_Id);
 
+
+        // image slider
         sliderLayout=findViewById(R.id.imageSlider);
         sliderLayout.setIndicatorAnimation(IndicatorAnimations.FILL);
         sliderLayout.setScrollTimeInSec(1);
@@ -53,6 +66,33 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
+    private void catRecycler() {
+        catRecycler.setHasFixedSize(true);
+       catRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<Integer> catList=new ArrayList<>();
+
+        catList.add(R.drawable.sp1);
+        catList.add(R.drawable.sp2);
+        catList.add(R.drawable.sp3);
+        catList.add(R.drawable.sp4);
+        catList.add(R.drawable.sp5);
+        catList.add(R.drawable.babycollection);
+        catList.add(R.drawable.bags);
+        catList.add(R.drawable.belt);
+        catList.add(R.drawable.jeans);
+        catList.add(R.drawable.kids);
+        catList.add(R.drawable.rainy);
+        catList.add(R.drawable.shirt);
+        catList.add(R.drawable.sunglass);
+        catList.add(R.drawable.umbrella);
+        catList.add(R.drawable.watch);
+       CatAdapter catAdapter =new CatAdapter(this,catList);
+       catRecycler.setAdapter(catAdapter);
+
+    }
+
 
     private void setSliderView() {
         for (int i=0;i<=4;i++){
@@ -65,7 +105,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     case 1:
                     defaultSliderView.setImageDrawable(R.drawable.sp2);
                         defaultSliderView.setDescription("Happy Shopping");
-
                     break;
                     case 2:
                     defaultSliderView.setImageDrawable(R.drawable.sp3);
@@ -80,8 +119,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         defaultSliderView.setDescription("Women Category");
                     break;
             }
+
+            defaultSliderView.setDescriptionTextSize(16);
+            defaultSliderView.setDescriptionTextColor(R.color.white);
             defaultSliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
-            defaultSliderView.setDescriptionTextColor(R.color.colorYellow);
            // defaultSliderView.setDescription("This is "+ (i+1));
             final  int finalI=i;
             defaultSliderView.setOnSliderClickListener(new SliderView.OnSliderClickListener() {
