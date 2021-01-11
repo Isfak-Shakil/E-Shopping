@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -27,8 +28,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     static final float END_SCALE = 0.7f;
     private ImageView menuBtn;
 
-    RecyclerView catRecycler;
-    //CatAdapter catAdapter;
+    RecyclerView catRecycler,trendingRecycler;
+    //Adapter;
+    TrendingAdapter trendingAdapter;
 
 
     DrawerLayout drawerLayout;
@@ -48,7 +50,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         menuBtn=findViewById(R.id.menuBtn);
         catRecycler=findViewById(R.id.categoriesRecyclerId);
+       trendingRecycler=findViewById(R.id.trendingRecyclerId);
         catRecycler();
+        trendingAdapter();
 
 
         drawerLayout = findViewById(R.id.drawerLayout_Id);
@@ -65,6 +69,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
       navigationDrawer();
 
 
+    }
+    private void  trendingAdapter(){
+        trendingRecycler.setHasFixedSize(true);
+        trendingRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<TrendingHelperClass> trendingClasses = new ArrayList<>();
+
+       trendingClasses.add(new TrendingHelperClass(R.drawable.bags, "Bags", "Stylish different kind Bags"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.sunglass, "Sunglasses", "Branded Sunglasses"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.umbrella, "Umbrella", "Different type of exported Umbrella"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.sp4, "Women", "Winter Collection for women"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.jeans, "Jeans", "Jeans Collection For Gents"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.shirt, "Shirt", "Shirt collection for male.cotton only"));
+       trendingClasses.add(new TrendingHelperClass(R.drawable.belt, "Belt", "Belt for formal and Informal"));
+
+        trendingAdapter = new TrendingAdapter(this,trendingClasses);
+        trendingRecycler.setAdapter(trendingAdapter);
+
+        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
     }
 
     private void catRecycler() {

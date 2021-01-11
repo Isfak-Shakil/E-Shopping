@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_2sdp"
+    app:cardElevation="@dimen/_8sdp"
+    android:layout_width="@dimen/_160sdp"
+    android:layout_height="@dimen/_260sdp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/trending_imageId"
+            android:scaleType="centerCrop"
+            android:src="@drawable/kids"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"/>
+
+        <TextView
+            android:id="@+id/trending_titleId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kids Winter Collection"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+        <RatingBar
+
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:rating="3.5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/trending_descriptionId"
+            android:text="Special winter collerction for kids.Cottons Cloth ."
+            android:layout_width="wrap_content"
+            android:textColor="@color/black"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

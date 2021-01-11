@@ -17,7 +17,7 @@
         android:layout_alignParentBottom="true"
         android:text="A better place for shopping"
         android:textAllCaps="false"
-        android:textColor="@color/blue" />
+        android:textColor="@color/black" />
 
     <TextView
         android:id="@+id/appName_Id"
@@ -26,7 +26,7 @@
         android:text="Online Shop"
         android:layout_above="@id/menu_sloganId"
         android:textSize="@dimen/_20sdp"
-        android:textColor="@color/blue"
+        android:textColor="@android:color/holo_blue_bright"
         android:textStyle="bold" />
 
 
