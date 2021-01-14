@@ -4,8 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawerLayout_Id"
     android:layout_width="match_parent"
+    android:background="@color/lightWhite"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/_10sdp"
+    android:padding="@dimen/_5sdp"
     tools:context=".MainActivity">
 
     <com.google.android.material.navigation.NavigationView
@@ -119,6 +120,32 @@
                         android:id="@+id/trendingRecyclerId"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_200sdp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Special Sell"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/holo_blue_bright"
+                            android:textSize="@dimen/_20sdp" />
+
+                    </RelativeLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/specialSellRecyclerId"
+                        tools:listitem="@layout/special_sell_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
                 </LinearLayout>
 
 

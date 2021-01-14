@@ -28,9 +28,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     static final float END_SCALE = 0.7f;
     private ImageView menuBtn;
 
-    RecyclerView catRecycler,trendingRecycler;
+    RecyclerView catRecycler,trendingRecycler,specialRecycler;
     //Adapter;
     TrendingAdapter trendingAdapter;
+    SpecialSellAdapter specialSellAdapter;
 
 
     DrawerLayout drawerLayout;
@@ -51,8 +52,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         menuBtn=findViewById(R.id.menuBtn);
         catRecycler=findViewById(R.id.categoriesRecyclerId);
        trendingRecycler=findViewById(R.id.trendingRecyclerId);
+       specialRecycler=findViewById(R.id.specialSellRecyclerId);
+
+
         catRecycler();
         trendingAdapter();
+        specialRecycler();
 
 
         drawerLayout = findViewById(R.id.drawerLayout_Id);
@@ -70,6 +75,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
     }
+
+    private void specialRecycler() {
+        specialRecycler.setHasFixedSize(true);
+        specialRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+
+        ArrayList<SpecialSellHelperClass> specialSellHelperClasses = new ArrayList<>();
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sports,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.rainy,"10% OFF","Rainy","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.watch,"10% OFF","Watch","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp5,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp1,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp3,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp2,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp4,"10% OFF","Sports","Original Price:200","Discounted Price:190"));
+
+
+        specialSellAdapter = new SpecialSellAdapter(this,specialSellHelperClasses);
+        specialRecycler.setAdapter(specialSellAdapter);
+    }
+
     private void  trendingAdapter(){
         trendingRecycler.setHasFixedSize(true);
         trendingRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));

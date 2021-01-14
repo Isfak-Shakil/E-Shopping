@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/_180sdp"
+    android:layout_height="@dimen/_220sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="8dp"
+    android:background="@color/lightWhite"
+    app:contentPadding="5dp">
+
+    <RelativeLayout
+        android:background="@color/lightWhite"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/productIconIv_Id"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
+            android:src="@drawable/sports"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="5dp" />
+        <LinearLayout
+            android:layout_below="@id/productIconIv_Id"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+          >
+            <TextView
+                android:id="@+id/discountNoteTv_Id"
+                android:background="@drawable/shape01"
+                android:padding="@dimen/_5sdp"
+                android:textColor="@color/teal_200"
+                android:text="10% OFF"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/titleTv_Id"
+                android:textColor="@color/black"
+                android:layout_marginTop="5dp"
+                android:text="Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/originalPriceTv_Id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Original Price:$200"
+                    android:textColor="@color/black" />
+                <TextView
+                    android:id="@+id/discountedPriceTv_Id"
+                    android:layout_below="@id/originalPriceTv_Id"
+                    android:textColor="@color/black"
+                    android:text="Discounted Price:$190"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
