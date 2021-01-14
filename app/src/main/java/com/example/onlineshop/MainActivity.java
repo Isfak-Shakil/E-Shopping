@@ -7,6 +7,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -117,7 +118,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void catRecycler() {
         catRecycler.setHasFixedSize(true);
-       catRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        catRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<Integer> catList=new ArrayList<>();
 
@@ -136,8 +137,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         catList.add(R.drawable.sunglass);
         catList.add(R.drawable.umbrella);
         catList.add(R.drawable.watch);
-       CatAdapter catAdapter =new CatAdapter(this,catList);
-       catRecycler.setAdapter(catAdapter);
+        CatAdapter catAdapter =new CatAdapter(this,catList);
+        catRecycler.setAdapter(catAdapter);
 
     }
 
@@ -230,6 +231,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.navCategories:
+                startActivity(new Intent(getApplicationContext(),CategoryActivity.class));
+                break;
+
+        }
         return true;
     }
 }
