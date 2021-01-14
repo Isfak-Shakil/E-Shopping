@@ -33,9 +33,9 @@ public class CategoryLayoutAdapter extends RecyclerView.Adapter<CategoryLayoutAd
     public void onBindViewHolder(@NonNull CategoryLayoutHolder holder, int position) {
         CatLayoutHelperClass catLayoutHelperClass=catLayoutList.get(position);
 
-        holder.titleTv.setText(catLayoutHelperClass.getTitle());
-        holder.itemCountTv.setText(catLayoutHelperClass.getItemCount());
-        holder.rightArrow.setImageResource(R.drawable.arrow_right);
+        holder.titleCatTv.setText(catLayoutHelperClass.getTitle());
+       holder.itemCountTv.setText(catLayoutHelperClass.getItemCount());
+        //holder.rightArrow.setImageResource(R.drawable.arrow_right);
 
     }
 
@@ -45,13 +45,13 @@ public class CategoryLayoutAdapter extends RecyclerView.Adapter<CategoryLayoutAd
     }
 
     public  class CategoryLayoutHolder extends RecyclerView.ViewHolder {
-        TextView titleTv,itemCountTv;
+        TextView titleCatTv,itemCountTv;
         ImageView rightArrow;
         public CategoryLayoutHolder(@NonNull View itemView) {
             super(itemView);
-            titleTv=itemView.findViewById(R.id.titleCatId);
+            titleCatTv=itemView.findViewById(R.id.titleCatId);
             itemCountTv=itemView.findViewById(R.id.itemCatId);
-            rightArrow=itemView.findViewById(R.id.right_arrowCatId);
+            //rightArrow=itemView.findViewById(R.id.right_arrowCatId);
         }
     }
 }

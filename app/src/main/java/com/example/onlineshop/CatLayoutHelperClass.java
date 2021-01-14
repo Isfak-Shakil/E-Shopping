@@ -2,12 +2,12 @@ package com.example.onlineshop;
 
 public class CatLayoutHelperClass {
     String title;
-    int itemCount;
+   String itemCount;
 
     public CatLayoutHelperClass() {
     }
 
-    public CatLayoutHelperClass(String title, int itemCount) {
+    public CatLayoutHelperClass(String title, String itemCount) {
         this.title = title;
         this.itemCount = itemCount;
     }
@@ -20,11 +20,11 @@ public class CatLayoutHelperClass {
         this.title = title;
     }
 
-    public int getItemCount() {
+    public String getItemCount() {
         return itemCount;
     }
 
-    public void setItemCount(int itemCount) {
+    public void setItemCount(String itemCount) {
         this.itemCount = itemCount;
     }
 }

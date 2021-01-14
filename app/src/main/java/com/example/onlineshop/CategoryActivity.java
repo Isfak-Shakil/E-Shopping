@@ -10,6 +10,7 @@ import java.util.ArrayList;
 
 public class CategoryActivity extends AppCompatActivity {
     RecyclerView catLayoutRecycler;
+    CategoryLayoutAdapter categoryLayoutAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,17 +25,17 @@ public class CategoryActivity extends AppCompatActivity {
 
         ArrayList<CatLayoutHelperClass> catList=new ArrayList<>();
 
-       catList.add(new CatLayoutHelperClass("Kids Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Men Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Women Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Winter Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Summer Collection",2 ));
-       catList.add(new CatLayoutHelperClass("Rainy Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Belt Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Watch Collection",20 ));
-       catList.add(new CatLayoutHelperClass("Umbrella Collection",40 ));
-       catList.add(new CatLayoutHelperClass("Random Collection",2 ));
-        CategoryLayoutAdapter categoryLayoutAdapter=new CategoryLayoutAdapter(this,catList);
+       catList.add(new CatLayoutHelperClass("Kids Collection","20" ));
+       catList.add(new CatLayoutHelperClass("Men Collection","30" ));
+       catList.add(new CatLayoutHelperClass("Women Collection","50" ));
+       catList.add(new CatLayoutHelperClass("Winter Collection","20" ));
+       catList.add(new CatLayoutHelperClass("Summer Collection","20" ));
+       catList.add(new CatLayoutHelperClass("Rainy Collection","10" ));
+       catList.add(new CatLayoutHelperClass("Belt Collection","20" ));
+       catList.add(new CatLayoutHelperClass("Watch Collection","10" ));
+       catList.add(new CatLayoutHelperClass("Umbrella Collection","20" ));
+       catList.add(new CatLayoutHelperClass("Random Collection","20"));
+       categoryLayoutAdapter=new CategoryLayoutAdapter(this,catList);
         catLayoutRecycler.setAdapter(categoryLayoutAdapter);
 
     }

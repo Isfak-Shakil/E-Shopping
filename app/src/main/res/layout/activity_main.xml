@@ -118,6 +118,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/trendingRecyclerId"
+                        android:layout_marginTop="@dimen/_10sdp"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_200sdp" />
                 </LinearLayout>
@@ -143,6 +144,7 @@
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/specialSellRecyclerId"
+                        android:layout_marginTop="@dimen/_10sdp"
                         tools:listitem="@layout/special_sell_layout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent" />

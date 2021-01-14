@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardElevation="8dp"
     android:background="@color/lightWhite"
-    app:contentPadding="5dp">
+    app:cardCornerRadius="@dimen/_8sdp">
 
     <RelativeLayout
         android:background="@color/lightWhite"
