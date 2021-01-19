@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import com.example.onlineshop.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationView;
 import com.smarteist.autoimageslider.DefaultSliderView;
 import com.smarteist.autoimageslider.IndicatorAnimations;
@@ -27,7 +28,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     static final float END_SCALE = 0.7f;
-    private ImageView menuBtn;
 
     RecyclerView catRecycler,trendingRecycler,specialRecycler;
     //Adapter;
@@ -41,16 +41,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
   SliderLayout sliderLayout;
 
-
+  ActivityMainBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        menuBtn=findViewById(R.id.menuBtn);
         catRecycler=findViewById(R.id.categoriesRecyclerId);
        trendingRecycler=findViewById(R.id.trendingRecyclerId);
        specialRecycler=findViewById(R.id.specialSellRecyclerId);
@@ -189,13 +189,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setCheckedItem(R.id.navCategories);
-        menuBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
-                    drawerLayout.closeDrawer(GravityCompat.START);
-                } else drawerLayout.openDrawer(GravityCompat.START);
-            }
+        binding.menuBtn.setOnClickListener(v -> {
+            if (drawerLayout.isDrawerVisible(GravityCompat.START)) {
+                drawerLayout.closeDrawer(GravityCompat.START);
+            } else drawerLayout.openDrawer(GravityCompat.START);
         });
         animateNavigationDrawer();
     }

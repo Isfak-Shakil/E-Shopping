@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/Theme.OnlineShop">
-        <activity android:name=".CategoryActivity"></activity>
+        <activity android:name=".VeryOTPActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".CategoryActivity" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

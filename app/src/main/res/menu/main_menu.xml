@@ -8,7 +8,7 @@
 
                 <item
                     android:id="@+id/navCategories"
-                    android:icon="@drawable/menu_black"
+                    android:icon="@drawable/facebook_black"
                     android:title="Categories" />
                 <item
                     android:id="@+id/navFavourite"
@@ -34,38 +34,34 @@
 
 
 
-    <group
-        android:id="@+id/group4"
-        android:checkableBehavior="single">
-        <item
-            android:id="@+id/subtitle3"
-            android:title="Social">
-            <menu>
-                <item
-                    android:id="@+id/navFacebook"
-                    android:icon="@drawable/facebook_black"
-                    android:title="Facebook" />
-                <item
-                    android:id="@+id/navInstagram"
-                    android:icon="@drawable/instagram"
-                    android:title="Instagram" />
-                <item
-                    android:id="@+id/navWhatsapp"
-                  android:icon="@drawable/whatsapp"
-                    android:title="Whatsapp" />
 
-            </menu>
+        <item android:title="Social">
+            <group android:checkableBehavior="single">
+
+                    <item
+                        android:id="@+id/navFacebook"
+                        android:icon="@drawable/facebook_black"
+                        android:title="Facebook" />
+                    <item
+                        android:id="@+id/navInstagram"
+                        android:icon="@drawable/instagram"
+                        android:title="Instagram" />
+                    <item
+                        android:id="@+id/navWhatsapp"
+                        android:icon="@drawable/whatsapp"
+                        android:title="Whatsapp" />
+
+
+            </group>
+
         </item>
-    </group>
 
-<item android:title="Others"/>
-    <group
-        android:id="@+id/group2"
-        android:checkableBehavior="none">
-        <item
-            android:id="@+id/subtitle"
-            android:title="Others">
-            <menu>
+
+<item android:title="Others"
+    >
+    <group android:checkableBehavior="none">
+
+
                 <item
                     android:id="@+id/navTerms"
                     android:icon="@drawable/terms_cond"
@@ -83,9 +79,8 @@
                     android:icon="@drawable/playstore"
                     android:title="More App" />
 
-            </menu>
-        </item>
     </group>
+</item>
 
 
 
