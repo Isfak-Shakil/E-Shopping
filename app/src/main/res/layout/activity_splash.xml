@@ -11,7 +11,7 @@
 
     <ImageView
         android:id="@+id/appName"
-          android:background="@color/colorYellow"
+          android:background="@color/purple_200"
         android:layout_width="@dimen/_300sdp"
         android:layout_marginTop="@dimen/_40sdp"
         android:layout_height="wrap_content"

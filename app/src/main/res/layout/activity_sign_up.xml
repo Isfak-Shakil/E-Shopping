@@ -11,6 +11,7 @@
         tools:context=".SignUpActivity">
         <com.airbnb.lottie.LottieAnimationView
             android:id="@+id/lottie"
+            android:transitionName="logo_image"
             android:elevation="@dimen/_2sdp"
             app:lottie_autoPlay="true"
             app:lottie_rawRes="@raw/splash"
@@ -65,6 +66,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/userNameId"
+                android:transitionName="phone"
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/purple_500"
                 app:startIconTint="@color/purple_500"
@@ -107,6 +109,7 @@
             </com.google.android.material.textfield.TextInputLayout>
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/passwordId"
+                android:transitionName="password"
                 app:passwordToggleEnabled="true"
                 app:endIconTint="@color/purple_500"
                 app:startIconTint="@color/purple_500"

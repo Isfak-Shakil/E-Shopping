@@ -2,8 +2,10 @@ package com.example.onlineshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -29,7 +31,22 @@ public class LoginActivity extends AppCompatActivity {
         binding.singUpId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LoginActivity.this,SignUpActivity.class));
+                Intent intent= new Intent (LoginActivity.this,SignUpActivity.class);
+                startActivity(intent);
+//                Pair[] pairs=new Pair[7];
+//                pairs[0]=new Pair<View,String>(binding.lottie,"logo_image");
+//                pairs[1]=new Pair<View,String>(binding.mainTextId,"main_text");
+//                pairs[2]=new Pair<View,String>(binding.sloganTextId,"slogan_text");
+//                pairs[3]=new Pair<View,String>(binding.phoneId,"username_text");
+//                pairs[4]=new Pair<View,String>(binding.passwordId,"password_text");
+//                pairs[5]=new Pair<View,String>(binding.loginBtnId,"login_text");
+//                pairs[6]=new Pair<View,String>(binding.singUpId,"signUp_text");
+//                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+//                    ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation(LoginActivity.this, pairs);
+//                    startActivity(intent, options.toBundle());
+//                    finish();
+//                }
+
             }
         });
     }
