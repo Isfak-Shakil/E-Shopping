@@ -2,6 +2,8 @@ package com.example.onlineshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,18 +23,60 @@ public class SignUpActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         // binding activity
-        binding=ActivitySignUpBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
-
-      //  binding.lottie.animate().translationY(-300).setDuration(2000).setStartDelay(4000);
-        binding.signUpNextBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(SignUpActivity.this,VeryOTPActivity.class));
-            }
-        });
+//
+//        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(SignUpActivity.this, VeryOTPActivity.class));
+//            }
+//        });
+//        binding.skipBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this);
+//                // Setting Alert Dialog Title
+//                builder.setTitle("Confirm Exit..!!!");
+//                // Icon Of Alert Dialog
+//                builder.setIcon(R.drawable.ques);
+//                builder.setMessage("Are you sure,You want to exit");
+//                builder.setCancelable(false);
+//                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                        startActivity(new Intent(getApplicationContext(), OTPDesignActivity.class));
+//                        finish();
+//                    }
+//                });
+//
+//                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//                    }
+//                });
+//                builder.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialog, int which) {
+//
+//                    }
+//                });
+//
+//                AlertDialog alertDialog = builder.create();
+//
+//                alertDialog.show();
+//            }
+//        });
+//
+//
+//        //  binding.lottie.animate().translationY(-300).setDuration(2000).setStartDelay(4000);
+//        binding.submitBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                startActivity(new Intent(SignUpActivity.this, OTPDesignActivity.class));
+//            }
+//        });
     }
 }

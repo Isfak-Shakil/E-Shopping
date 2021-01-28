@@ -55,6 +55,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/phoneId"
                 android:transitionName="phone"
+
                 app:endIconMode="clear_text"
                 app:endIconTint="@color/purple_500"
                 app:startIconTint="@color/purple_500"
@@ -116,6 +117,7 @@
                     android:layout_alignParentEnd="true"
                     android:background="#00000000"
                     android:text="Forget Password"
+                    android:textAllCaps="false"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
             </RelativeLayout>

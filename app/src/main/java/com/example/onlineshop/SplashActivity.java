@@ -14,6 +14,7 @@ import com.airbnb.lottie.LottieAnimationView;
 public class SplashActivity extends AppCompatActivity {
     private ImageView logo,appName,splashImage;
     private LottieAnimationView lottieAnimationView;
+    private TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,18 +24,20 @@ public class SplashActivity extends AppCompatActivity {
 
         appName=findViewById(R.id.appName);
         lottieAnimationView=findViewById(R.id.lottie);
+        textView=findViewById(R.id.textViewId);
 
 
 
         appName.animate().translationY(1000).setDuration(1000).setStartDelay(4000);
+        
         lottieAnimationView.animate().translationY(-300).setDuration(2000).setStartDelay(4000);
 
 new Handler().postDelayed(new Runnable() {
     @Override
     public void run() {
 
-       // startActivity(new Intent(SplashActivity.this,LoginActivity.class));
-        startActivity(new Intent(SplashActivity.this,OTPDesignActivity.class));
+       startActivity(new Intent(SplashActivity.this,LoginActivity.class));
+
         finish();
     }
 },5000);
