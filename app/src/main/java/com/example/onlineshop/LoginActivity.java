@@ -29,6 +29,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.HashMap;
+
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     FirebaseAuth firebaseAuth;
@@ -47,6 +49,13 @@ public class LoginActivity extends AppCompatActivity {
 
         mNumber = binding.phoneId.getEditText().getText().toString().trim();
         password = binding.passwordId.getEditText().getText().toString().trim();
+//check wheather phone and password already saved or not
+        SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_REMEMBERME);
+        if (sessionManager.checkRememberMe()){
+            HashMap<String,String> rememberMeDetails=sessionManager.getRememberMeDetailsFromSession();
+            binding.phoneEt.setText(rememberMeDetails.get(SessionManager.KEW_SESSIONPHONENUMBER));
+            binding.passWordEt.setText(rememberMeDetails.get(SessionManager.KEW_SESSIONPASSWORD));
+        }
 
         binding.loginBtnId.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,6 +102,12 @@ public class LoginActivity extends AppCompatActivity {
         if (!isConnected(this)){
             showCustomDialog();
         }
+        if (binding.rememberMe.isChecked()){
+            SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_REMEMBERME);
+            sessionManager.createRememberMeSession(mNumber,password);
+        }
+
+
         Query checkUser = FirebaseDatabase.getInstance().getReference("users").orderByChild("phone").equalTo(mNumber);
         checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -106,10 +121,11 @@ public class LoginActivity extends AppCompatActivity {
                         binding.passwordId.setError(null);
                         binding.passwordId.setErrorEnabled(false);
                         // getting all data
-//                        String nameDb=snapshot.child(mNumber).child("name").getValue(String.class);
-//                        String addressDb=snapshot.child(mNumber).child("address").getValue(String.class);
-//                        String phone=snapshot.child(mNumber).child("phone").getValue(String.class);
-
+                        String nameDb=snapshot.child(mNumber).child("name").getValue(String.class);
+                        String addressDb=snapshot.child(mNumber).child("address").getValue(String.class);
+                        String phone=snapshot.child(mNumber).child("phone").getValue(String.class);
+                        SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_USERSESSION);
+                        sessionManager.createUserLoginSession(mNumber,nameDb,addressDb,phone);
                         startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         finish();
 

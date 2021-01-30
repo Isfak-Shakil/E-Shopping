@@ -123,8 +123,9 @@
 
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="textEmailAddress"
-                        android:textColor="@color/purple_500" />
+                        android:inputType="textPostalAddress"
+                        android:textColor="@color/black"
+                       />
                 </com.google.android.material.textfield.TextInputLayout>
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/passwordId"
@@ -137,7 +138,7 @@
                     android:transitionName="password"
                     app:boxStrokeColor="@color/purple_500"
                     app:boxStrokeWidthFocused="@dimen/_2sdp"
-                    app:endIconTint="@color/purple_500"
+                    app:endIconTint="@color/black"
                     app:hintTextColor="@color/black"
                     app:passwordToggleEnabled="true"
                     app:startIconDrawable="@drawable/lock"
