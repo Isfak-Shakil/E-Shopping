@@ -76,7 +76,7 @@
                     android:id="@+id/phoneEt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="text"
+                    android:inputType="phone"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -91,8 +91,8 @@
                 app:boxStrokeColor="@color/purple_500"
                 app:boxStrokeWidthFocused="@dimen/_2sdp"
                 app:endIconTint="@color/purple_500"
-                app:hintTextColor="@color/black"
                 app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/purple_500"
                 app:startIconDrawable="@drawable/lock"
                 app:startIconTint="@color/purple_500">
 
@@ -100,7 +100,7 @@
                     android:id="@+id/passWordEt"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:inputType="textPassword"
+                    android:inputType="numberPassword"
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -128,23 +128,23 @@
                     android:layout_alignParentRight="true"
                     android:background="#00000000"
                     android:text="Forget Password"
+                    android:textStyle="normal"
                     android:textAllCaps="false"
                     android:textColor="@color/black" />
             </RelativeLayout>
 
             <RelativeLayout
+                android:layout_margin="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <Button
                     android:id="@+id/loginBtnId"
-                    android:layout_width="@dimen/_150sdp"
+                    android:layout_width="@dimen/_120sdp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
+                    android:padding="@dimen/_5sdp"
                     android:background="@color/purple_200"
                     android:elevation="0dp"
-                    android:minWidth="@dimen/_150sdp"
-                    android:padding="@dimen/_5sdp"
                     android:text="Login"
                     android:textAllCaps="false"
                     android:textColor="@color/lightWhite"
@@ -152,18 +152,24 @@
 
                 <Button
                     android:id="@+id/singUpId"
-                    android:layout_width="@dimen/_150sdp"
+                    android:layout_width="@dimen/_120sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/_10sdp"
                     android:layout_toRightOf="@id/loginBtnId"
                     android:background="@color/purple_200"
                     android:elevation="0dp"
-                    android:minWidth="@dimen/_150sdp"
                     android:padding="@dimen/_5sdp"
                     android:text="Sign Up"
                     android:textAllCaps="false"
                     android:textColor="@color/white"
                     android:transitionName="signUp_text" />
+                <ProgressBar
+                    android:id="@+id/progressBarId"
+                    android:layout_below="@id/singUpId"
+                    android:backgroundTint="@color/purple_500"
+                   android:layout_centerInParent="true"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content" />
 
             </RelativeLayout>
 

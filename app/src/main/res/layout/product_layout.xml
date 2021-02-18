@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardElevation="@dimen/_10sdp"
+    android:padding="@dimen/_10sdp"
+    android:background="@color/lightWhite"
+    android:layout_width="@dimen/_160sdp"
+    android:layout_height="@dimen/_260sdp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="@dimen/_10sdp"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/pImageId"
+            android:scaleType="centerCrop"
+            android:src="@drawable/kids"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_140sdp"/>
+
+        <TextView
+            android:id="@+id/pTitleId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kids Winter Collection"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+        <RatingBar
+            android:id="@+id/pRatingId"
+            style="@style/Widget.AppCompat.RatingBar.Small"
+            android:rating="3.5"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/pPriceNameId"
+                android:text="Price:"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/pPriceId"
+               android:layout_toRightOf="@+id/pPriceNameId"
+                android:text="100"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_width="wrap_content"
+                android:textColor="@color/black"
+                android:layout_height="wrap_content"/>
+
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

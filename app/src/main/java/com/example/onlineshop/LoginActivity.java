@@ -3,7 +3,6 @@ package com.example.onlineshop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,31 +11,29 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Pair;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.airbnb.lottie.LottieAnimationView;
 import com.example.onlineshop.databinding.ActivityLoginBinding;
-import com.example.onlineshop.databinding.ActivityMainBinding;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     ActivityLoginBinding binding;
     FirebaseAuth firebaseAuth;
-    String mNumber, password;
-    ProgressBar progressBar;
-
+   String mNumber;
+    String password;
+    ProgressBar progressbar;
 
 
     @Override
@@ -47,24 +44,36 @@ public class LoginActivity extends AppCompatActivity {
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        mNumber = binding.phoneId.getEditText().getText().toString().trim();
-        password = binding.passwordId.getEditText().getText().toString().trim();
+        progressbar=findViewById(R.id.progressBarId);
+        progressbar.setVisibility(View.GONE);
+        mNumber = Objects.requireNonNull(binding.phoneId.getEditText()).getText().toString().trim();
+        password = Objects.requireNonNull(binding.passwordId.getEditText()).getText().toString().trim();
+
+
 //check wheather phone and password already saved or not
-        SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_REMEMBERME);
-        if (sessionManager.checkRememberMe()){
-            HashMap<String,String> rememberMeDetails=sessionManager.getRememberMeDetailsFromSession();
+        SessionManager sessionManager = new SessionManager(LoginActivity.this, SessionManager.SESSION_REMEMBERME);
+        if (sessionManager.checkRememberMe()) {
+            HashMap<String, String> rememberMeDetails = sessionManager.getRememberMeDetailsFromSession();
+            // this phoneEt and passWordEt are decleared for textInput EditText not for layout
             binding.phoneEt.setText(rememberMeDetails.get(SessionManager.KEW_SESSIONPHONENUMBER));
             binding.passWordEt.setText(rememberMeDetails.get(SessionManager.KEW_SESSIONPASSWORD));
         }
+        binding.forgetPasswordId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, ForgetPasswordActivity.class));
+            }
+        });
 
         binding.loginBtnId.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (   !validatePhoneNumber() | !validatePassword()) {
+
+                if (!validatePhoneNumber() | !validatePassword()) {
                     return;
                 } else {
-                    progressBar.setVisibility(View.VISIBLE);
+
                     loginUser();
                 }
             }
@@ -97,70 +106,80 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     private void loginUser() {
-        if (!isConnected(this)){
+        progressbar.setVisibility(View.VISIBLE);
+        final String number=binding.phoneId.getEditText().getText().toString().trim();
+        final String passwordUser=binding.passwordId.getEditText().getText().toString().trim();
+
+        //checking data connection
+        if (!isConnected(this)) {
             showCustomDialog();
         }
-        if (binding.rememberMe.isChecked()){
-            SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_REMEMBERME);
-            sessionManager.createRememberMeSession(mNumber,password);
+        if (binding.rememberMe.isChecked()) {
+            SessionManager sessionManager = new SessionManager(LoginActivity.this, SessionManager.SESSION_REMEMBERME);
+            sessionManager.createRememberMeSession(number, passwordUser);
         }
 
 
-        Query checkUser = FirebaseDatabase.getInstance().getReference("users").orderByChild("phone").equalTo(mNumber);
-        checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    binding.phoneId.setError(null);
-                    binding.phoneId.setErrorEnabled(false);
+        Query checkUser = FirebaseDatabase.getInstance().getReference("users").orderByChild("phone").equalTo(number);
+            checkUser.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        binding.phoneId.setError(null);
+                        binding.phoneId.setErrorEnabled(false);
 
-                    String passwordDb = snapshot.child(mNumber).child("password").getValue(String.class);
-                    if (passwordDb.equals(password)) {
-                        binding.passwordId.setError(null);
-                        binding.passwordId.setErrorEnabled(false);
-                        // getting all data
-                        String nameDb=snapshot.child(mNumber).child("name").getValue(String.class);
-                        String addressDb=snapshot.child(mNumber).child("address").getValue(String.class);
-                        String phone=snapshot.child(mNumber).child("phone").getValue(String.class);
-                        SessionManager sessionManager=new SessionManager(LoginActivity.this,SessionManager.SESSION_USERSESSION);
-                        sessionManager.createUserLoginSession(mNumber,nameDb,addressDb,phone);
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
+                        String passwordDb = snapshot.child(number).child("password").getValue(String.class);
+                        if (passwordDb.equals(passwordUser)) {
+                            binding.passwordId.setError(null);
+                            binding.passwordId.setErrorEnabled(false);
+                            // getting all data
+//                            String nameDb = snapshot.child(number).child("name").getValue(String.class);
+//                            String addressDb = snapshot.child(number).child("address").getValue(String.class);
+//                            String phone = snapshot.child(number).child("phone").getValue(String.class);
 
 
-                    } else {
-                        progressBar.setVisibility(View.GONE);
-                        Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
+//                            SessionManager sessionManager = new SessionManager(LoginActivity.this, SessionManager.SESSION_USERSESSION);
+//                            sessionManager.createUserLoginSession(mNumber, nameDb, addressDb, phone);
+
+                           startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                           progressbar.setVisibility(View.GONE);
+                          finish();
+
+                        } else {
+                            //  progressBar.setVisibility(View.GONE);
+                            Toast.makeText(getApplicationContext(), "Password doesn't match", Toast.LENGTH_SHORT).show();
+                        }
                     }
-
-                } else {
-                    progressBar.setVisibility(View.GONE);
-                    Toast.makeText(getApplicationContext(), "No User exist", Toast.LENGTH_SHORT).show();
+                    else {
+                        // progressBar.setVisibility(View.GONE);
+                        Toast.makeText(getApplicationContext(), "No User exist", Toast.LENGTH_SHORT).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                progressBar.setVisibility(View.GONE);
-                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            });
+
+
     }
 
     private boolean isConnected(LoginActivity loginActivity) {
-        ConnectivityManager connectivityManager= (ConnectivityManager) loginActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo wifi=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        NetworkInfo mobile=connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (wifi !=null && wifi.isConnected()|| mobile!=null&&mobile.isConnected()){
+        ConnectivityManager connectivityManager = (ConnectivityManager) loginActivity.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo wifi = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
+        NetworkInfo mobile = connectivityManager.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+        if (wifi != null && wifi.isConnected() || mobile != null && mobile.isConnected()) {
             return true;
-        }
-        else {
+        } else {
             return false;
         }
     }
-    private void showCustomDialog(){
+
+    private void showCustomDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
         // Setting Alert Dialog Title
         builder.setMessage("Please connect to the wifi or mobile data to proceed further.");
