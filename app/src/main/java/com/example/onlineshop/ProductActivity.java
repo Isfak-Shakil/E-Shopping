@@ -27,7 +27,7 @@ import java.util.Objects;
 
 public class ProductActivity extends AppCompatActivity {
     ActivityProductBinding binding;
-    String catId;
+    static String catId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +67,8 @@ binding.backBtn.setOnClickListener(new View.OnClickListener() {
                 productModelArrayList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     ProductModel productModel = new ProductModel();
+                     productModel.setP_id(Objects.requireNonNull(ds.child("p_id").getValue()).toString());
+
                      productModel.setP_image(Objects.requireNonNull(ds.child("p_image").getValue()).toString());
                     productModel.setP_name(Objects.requireNonNull(ds.child("p_name").getValue()).toString());
                     productModel.setP_price(Objects.requireNonNull(ds.child("p_price").getValue()).toString());

@@ -47,7 +47,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/_10sdp">
+                        android:layout_marginTop="@dimen/_8sdp">
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerId"
                         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

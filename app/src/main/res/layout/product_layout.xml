@@ -2,8 +2,9 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="@dimen/_8sdp"
+    app:cardCornerRadius="@dimen/_12sdp"
     app:cardElevation="@dimen/_10sdp"
+    android:elevation="@dimen/_10sdp"
     android:padding="@dimen/_10sdp"
     android:background="@color/lightWhite"
     android:layout_width="@dimen/_160sdp"
@@ -20,7 +21,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/kids"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_140sdp"/>
+            android:layout_height="@dimen/_180sdp"/>
 
         <TextView
             android:id="@+id/pTitleId"

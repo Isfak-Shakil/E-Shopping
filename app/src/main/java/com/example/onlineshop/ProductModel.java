@@ -1,6 +1,7 @@
 package com.example.onlineshop;
 
 public class ProductModel {
+                String p_id;
                  String p_image;
                 String p_name;
                 String p_rating;
@@ -9,11 +10,20 @@ public class ProductModel {
     public ProductModel() {
     }
 
-    public ProductModel(String p_image, String p_name, String p_rating, String p_price) {
+    public ProductModel(String p_image, String p_name, String p_rating, String p_price,String p_id) {
+        this.p_id=p_id;
         this.p_image = p_image;
         this.p_name = p_name;
         this.p_rating = p_rating;
         this.p_price = p_price;
+    }
+
+    public String getP_id() {
+        return p_id;
+    }
+
+    public void setP_id(String p_id) {
+        this.p_id = p_id;
     }
 
     public String getP_image() {

@@ -259,9 +259,6 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
             case R.id.navCategories:
                 startActivity(new Intent(getApplicationContext(), CategoryActivity.class));
                 break;
-                case R.id.navCatList:
-                startActivity(new Intent(getApplicationContext(), ProductActivity.class));
-                break;
 
         }
         return true;
