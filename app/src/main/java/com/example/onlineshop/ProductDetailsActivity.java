@@ -3,6 +3,7 @@ package com.example.onlineshop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
@@ -27,11 +28,15 @@ import java.util.Objects;
 
 public class ProductDetailsActivity extends AppCompatActivity {
     ActivityProductDetailsBinding binding;
-        String pId;
+ String pId;
         ImageView pImage;
         ImageButton decrementBtn,incrementBtn;
         TextView productTitle,productPrice,productPrice2,productSize,productDescription,quantityNumTv;
         RatingBar ratingBar;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +44,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         binding=ActivityProductDetailsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-       pId=getIntent().getStringExtra("id");
+
+
 
         pImage=findViewById(R.id.productImageId);
         productTitle=findViewById(R.id.productTitleId);
@@ -60,12 +66,19 @@ public class ProductDetailsActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-      showSelectedItem();
+
+        pId= getIntent().getStringExtra("id");
+
+        showSelectedItem();
+
+
+
 
     }
 
     private void showSelectedItem() {
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference("categories").child(ProductActivity.catId).child("products").child(pId);
+
+    DatabaseReference  reference= FirebaseDatabase.getInstance().getReference("categories").child(ProductActivity.catId).child("products").child(pId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -73,7 +86,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
                     String image= ""+snapshot.child("p_image").getValue();
                     String nameDb =""+ snapshot.child("p_name").getValue();
                     String price =""+ snapshot.child("p_price").getValue();
-                    String rating =""+ snapshot.child("p_rating").getValue();
+                  String rating =""+ snapshot.child("p_rating").getValue();
                     String pSize =""+ snapshot.child("p_size").getValue();
                     String pDesc =""+ snapshot.child("p_description").getValue();
 

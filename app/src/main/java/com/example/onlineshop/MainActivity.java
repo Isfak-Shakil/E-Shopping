@@ -116,22 +116,44 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
         trendingRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<TrendingHelperClass> trendingClasses = new ArrayList<>();
-        final DatabaseReference reference = FirebaseDatabase.getInstance().getReference("categories");
 
 
-        trendingClasses.add(new TrendingHelperClass(R.drawable.bags, "Bags", "Stylish different kind Bags"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.sunglass, "Sunglasses", "Branded Sunglasses"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.umbrella, "Umbrella", "Different type of exported Umbrella"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.sp4, "Women", "Winter Collection for women"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.jeans, "Jeans", "Jeans Collection For Gents"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.shirt, "Shirt", "Shirt collection for male.cotton only"));
-        trendingClasses.add(new TrendingHelperClass(R.drawable.belt, "Belt", "Belt for formal and Informal"));
+  DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
+        Query query=reference.child("trending");
+       query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                trendingClasses.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+                    TrendingHelperClass helperClass=new TrendingHelperClass();
 
-        trendingAdapter = new TrendingAdapter(this, trendingClasses);
-        trendingRecycler.setAdapter(trendingAdapter);
+                    helperClass.setId(ds.child("p_id").getValue().toString());
+                    helperClass.setImage(ds.child("p_image").getValue().toString());
+                    helperClass.setTitle(ds.child("p_title").getValue().toString());
+                    helperClass.setDescription(ds.child("p_description").getValue().toString());
+                    helperClass.setTrendingPrice(ds.child("p_price").getValue().toString());
+                    trendingClasses.add(helperClass);
 
-        GradientDrawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LEFT_RIGHT, new int[]{0xffeff400, 0xffaff600});
+
+
+                }
+                //setup adapter
+                TrendingAdapter trendingAdapter = new TrendingAdapter(MainActivity.this, trendingClasses);
+                //set adapter
+                trendingRecycler.setAdapter(trendingAdapter);
+                trendingAdapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
     }
+
+
 
     private void catRecycler() {
         catRecycler.setHasFixedSize(true);
@@ -176,28 +198,28 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
             switch (i) {
                 case 0:
                     defaultSliderView.setImageDrawable(R.drawable.sp1);
-                    defaultSliderView.setDescription("Bags and Cloths");
+                   // defaultSliderView.setDescription("Bags and Cloths");
                     break;
                 case 1:
                     defaultSliderView.setImageDrawable(R.drawable.sp2);
-                    defaultSliderView.setDescription("Happy Shopping");
+                  //  defaultSliderView.setDescription("Happy Shopping");
                     break;
                 case 2:
                     defaultSliderView.setImageDrawable(R.drawable.sp3);
-                    defaultSliderView.setDescription("Men Category");
+                //    defaultSliderView.setDescription("Men Category");
                     break;
                 case 3:
                     defaultSliderView.setImageDrawable(R.drawable.sp4);
-                    defaultSliderView.setDescription("All Products");
+                 //   defaultSliderView.setDescription("All Products");
                     break;
                 case 4:
                     defaultSliderView.setImageDrawable(R.drawable.sp5);
-                    defaultSliderView.setDescription("Women Category");
+               //     defaultSliderView.setDescription("Women Category");
                     break;
             }
 
             defaultSliderView.setDescriptionTextSize(16);
-            defaultSliderView.setDescriptionTextColor(R.color.white);
+        //    defaultSliderView.setDescriptionTextColor(R.color.white);
             defaultSliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
             // defaultSliderView.setDescription("This is "+ (i+1));
             final int finalI = i;

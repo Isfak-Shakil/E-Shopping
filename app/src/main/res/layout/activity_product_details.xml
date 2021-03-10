@@ -37,7 +37,6 @@
         </RelativeLayout>
         <com.google.android.material.card.MaterialCardView
             app:cardElevation="@dimen/_8sdp"
-             android:padding="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             app:cardCornerRadius="@dimen/_20sdp"
             app:cardBackgroundColor="@color/lightWhite"
@@ -45,6 +44,7 @@
             android:layout_height="@dimen/_240sdp">
             <ImageView
                 android:id="@+id/productImageId"
+                android:scaleType="fitXY"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:src="@drawable/shirt" />

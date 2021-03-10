@@ -1,23 +1,41 @@
 package com.example.onlineshop;
 
 public class TrendingHelperClass {
-    int image;
-    String title,description;
+
+    String id,image, title,description,trendingPrice;
 
     public TrendingHelperClass() {
     }
 
-    public TrendingHelperClass(int image, String title, String description) {
+    public TrendingHelperClass(String id,String image, String title, String description,String trendingPrice) {
+        this.id=id;
         this.image = image;
         this.title = title;
         this.description = description;
+        this.trendingPrice=trendingPrice;
     }
 
-    public int getImage() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getTrendingPrice() {
+        return trendingPrice;
+    }
+
+    public void setTrendingPrice(String trendingPrice) {
+        this.trendingPrice = trendingPrice;
+    }
+
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

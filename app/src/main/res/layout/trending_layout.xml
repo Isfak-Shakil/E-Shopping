@@ -24,20 +24,41 @@
             android:id="@+id/trending_titleId"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Kids Winter Collection"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_16sdp" />
-        <RatingBar
+            android:text="Kids "
+            android:textSize="@dimen/_16sdp"
+            android:textColor="@color/teal_200"
+            />
 
-            style="@style/Widget.AppCompat.RatingBar.Small"
-            android:rating="3.5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
         <TextView
             android:id="@+id/trending_descriptionId"
             android:text="Special winter collerction for kids.Cottons Cloth ."
             android:layout_width="wrap_content"
             android:textColor="@color/black"
             android:layout_height="wrap_content"/>
+        <com.google.android.material.card.MaterialCardView
+            app:cardBackgroundColor="@color/lightWhite"
+            android:elevation="@dimen/_10sdp"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_10sdp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:textColor="@color/black"
+                    android:text="Price:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <TextView
+                    android:id="@+id/trendingPriceId"
+                    android:textColor="@color/black"
+                    android:text="555Tk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
