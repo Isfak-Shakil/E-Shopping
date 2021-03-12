@@ -65,7 +65,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         specialRecycler = findViewById(R.id.specialSellRecyclerId);
 
 
-
         catRecycler();
         trendingAdapter();
         specialRecycler();
@@ -84,12 +83,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationDrawer();
 
-binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        startActivity(new Intent(MainActivity.this,CategoryActivity.class));
-    }
-});
+        binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, CategoryActivity.class));
+            }
+        });
     }
 
     private void specialRecycler() {
@@ -97,18 +96,51 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
         specialRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<SpecialSellHelperClass> specialSellHelperClasses = new ArrayList<>();
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sports, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.rainy, "10% OFF", "Rainy", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.watch, "10% OFF", "Watch", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp5, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp1, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp3, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp2, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
-        specialSellHelperClasses.add(new SpecialSellHelperClass(R.drawable.sp4, "10% OFF", "Sports", "Original Price:200", "Discounted Price:190"));
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("special");
+        query.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                specialSellHelperClasses.clear();
+                for (DataSnapshot ds : snapshot.getChildren()) {
+
+                    String id = "" + ds.child("id").getValue().toString();
+                    String image = "" + ds.child("image").getValue().toString();
+                    String name = "" + ds.child("name").getValue().toString();
+                    String discount = "" + ds.child("discount").getValue().toString();
+                    String originalPrice = "" + ds.child("originalPrice").getValue().toString();
+                    String afterDiscount = "" + ds.child("afterDiscount").getValue().toString();
 
 
-        specialSellAdapter = new SpecialSellAdapter(this, specialSellHelperClasses);
-        specialRecycler.setAdapter(specialSellAdapter);
+                    SpecialSellHelperClass helperClass = new SpecialSellHelperClass();
+                    helperClass.setId(id);
+                    helperClass.setImage(image);
+                    helperClass.setTitle(name);
+                    helperClass.setDiscountNote(discount + "%OFF");
+                    helperClass.setOriginalPrice("Original Price:" + originalPrice);
+                    helperClass.setDiscountedPrice("AfterDiscount:" + afterDiscount);
+
+                    specialSellHelperClasses.add(helperClass);
+
+
+                }
+                //setup adapter
+                specialSellAdapter = new SpecialSellAdapter(MainActivity.this, specialSellHelperClasses);
+                //set adapter
+                specialRecycler.setAdapter(specialSellAdapter);
+                specialSellAdapter.notifyDataSetChanged();
+
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
     }
 
     private void trendingAdapter() {
@@ -118,14 +150,14 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
         ArrayList<TrendingHelperClass> trendingClasses = new ArrayList<>();
 
 
-  DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-        Query query=reference.child("trending");
-       query.addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("trending");
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 trendingClasses.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
-                    TrendingHelperClass helperClass=new TrendingHelperClass();
+                    TrendingHelperClass helperClass = new TrendingHelperClass();
 
                     helperClass.setId(ds.child("p_id").getValue().toString());
                     helperClass.setImage(ds.child("p_image").getValue().toString());
@@ -133,7 +165,6 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
                     helperClass.setDescription(ds.child("p_description").getValue().toString());
                     helperClass.setTrendingPrice(ds.child("p_price").getValue().toString());
                     trendingClasses.add(helperClass);
-
 
 
                 }
@@ -154,24 +185,23 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
     }
 
 
-
     private void catRecycler() {
         catRecycler.setHasFixedSize(true);
         catRecycler.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
 
         ArrayList<ImageHelperClass> catList = new ArrayList<>();
 
-        DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
-        Query query=reference.child("categories");
-       query.addValueEventListener(new ValueEventListener() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+        Query query = reference.child("categories");
+        query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 catList.clear();
                 for (DataSnapshot ds : snapshot.getChildren()) {
                     ImageHelperClass helperClass = new ImageHelperClass();
-                    helperClass.setCatId(ds.child("cat_id").getValue().toString());
-                    helperClass.setImageUrl(ds.child("cat_image").getValue().toString());
-                    helperClass.setName(ds.child("cat_name").getValue().toString());
+                    helperClass.setCatId(Objects.requireNonNull(ds.child("cat_id").getValue()).toString());
+                    helperClass.setImageUrl(Objects.requireNonNull(ds.child("cat_image").getValue()).toString());
+                    helperClass.setName(Objects.requireNonNull(ds.child("cat_name").getValue()).toString());
                     catList.add(helperClass);
 
                 }
@@ -198,28 +228,28 @@ binding.showAllCatId.setOnClickListener(new View.OnClickListener() {
             switch (i) {
                 case 0:
                     defaultSliderView.setImageDrawable(R.drawable.sp1);
-                   // defaultSliderView.setDescription("Bags and Cloths");
+                    // defaultSliderView.setDescription("Bags and Cloths");
                     break;
                 case 1:
                     defaultSliderView.setImageDrawable(R.drawable.sp2);
-                  //  defaultSliderView.setDescription("Happy Shopping");
+                    //  defaultSliderView.setDescription("Happy Shopping");
                     break;
                 case 2:
                     defaultSliderView.setImageDrawable(R.drawable.sp3);
-                //    defaultSliderView.setDescription("Men Category");
+                    //    defaultSliderView.setDescription("Men Category");
                     break;
                 case 3:
                     defaultSliderView.setImageDrawable(R.drawable.sp4);
-                 //   defaultSliderView.setDescription("All Products");
+                    //   defaultSliderView.setDescription("All Products");
                     break;
                 case 4:
                     defaultSliderView.setImageDrawable(R.drawable.sp5);
-               //     defaultSliderView.setDescription("Women Category");
+                    //     defaultSliderView.setDescription("Women Category");
                     break;
             }
 
             defaultSliderView.setDescriptionTextSize(16);
-        //    defaultSliderView.setDescriptionTextColor(R.color.white);
+            //    defaultSliderView.setDescriptionTextColor(R.color.white);
             defaultSliderView.setImageScaleType(ImageView.ScaleType.CENTER_CROP);
             // defaultSliderView.setDescription("This is "+ (i+1));
             final int finalI = i;

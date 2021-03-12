@@ -57,7 +57,7 @@
                     android:id="@+id/discountedPriceTv_Id"
                     android:layout_below="@id/originalPriceTv_Id"
                     android:textColor="@color/black"
-                    android:text="Discounted Price:$190"
+                    android:text="After Discount:$190"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/_5sdp"

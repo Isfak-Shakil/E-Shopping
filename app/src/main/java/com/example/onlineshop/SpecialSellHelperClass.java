@@ -1,13 +1,14 @@
 package com.example.onlineshop;
 
 public class SpecialSellHelperClass {
-    int image;
-    String discountNote,title,originalPrice,discountedPrice;
+
+    String id,image, discountNote,title,originalPrice,discountedPrice;
 
     public SpecialSellHelperClass() {
     }
 
-    public SpecialSellHelperClass(int image, String discountNote, String title, String originalPrice, String discountedPrice) {
+    public SpecialSellHelperClass(String id,String image, String discountNote, String title, String originalPrice, String discountedPrice) {
+        this.id=id;
         this.image = image;
         this.discountNote = discountNote;
         this.title = title;
@@ -15,11 +16,19 @@ public class SpecialSellHelperClass {
         this.discountedPrice = discountedPrice;
     }
 
-    public int getImage() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

@@ -1,6 +1,7 @@
 package com.example.onlineshop;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -32,12 +35,24 @@ public class SpecialSellAdapter extends RecyclerView.Adapter<SpecialSellAdapter.
     @Override
     public void onBindViewHolder(@NonNull SpecialSellHolderClass holder, int position) {
         SpecialSellHelperClass specialSellHelperClass=sSellList.get(position);
-        holder.imageView.setImageResource(specialSellHelperClass.getImage());
-        holder.discountNote.setText(specialSellHelperClass.getDiscountNote());
-        holder.title.setText(specialSellHelperClass.getTitle());
-        holder.originalPrice.setText(specialSellHelperClass.getOriginalPrice());
-        holder.discountedPrice.setText(specialSellHelperClass.getDiscountedPrice());
 
+        Glide.with(context).load(sSellList.get(position).getImage()).into(holder.imageView);
+
+    holder.title.setText(specialSellHelperClass.getTitle());
+    holder.discountNote.setText(specialSellHelperClass.getDiscountNote());
+    holder.originalPrice.setText(specialSellHelperClass.getOriginalPrice());
+    holder.discountedPrice.setText(specialSellHelperClass.getDiscountedPrice());
+
+    final String id=specialSellHelperClass.getId();
+
+    holder.itemView.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent=new Intent(context,SpecialSellProductDetails.class);
+            intent.putExtra("sId",id);
+            context.startActivity(intent);
+        }
+    });
 
     }
 
